@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8snode
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: k8snode
+  template:
+    metadata:
+      labels:
+        app: k8snode
+        version: v1
+    spec:
+      terminationGracePeriodSeconds: 300
+      containers:
+      - name: k8snode
+        image: k8snode:test
+        imagePullPolicy: Never
